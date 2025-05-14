@@ -2,7 +2,7 @@
 :root {
   /* Light Theme Colors */
   --primary-color-light: #38404b;
-  --secondary-color-light: #ff9d4d;
+  --secondary-color-light: #3c1751;
   --accent-color-light: #4fc3a1;
   --background-color-light: #ffffff;
   --surface-color-light: #f8f9fa;
@@ -13,7 +13,7 @@
 
   /* Dark Theme Colors */
   --primary-color-dark: #2d3748;
-  --secondary-color-dark: #ff9d4d;
+  --secondary-color-dark: #b59ec4;
   --accent-color-dark: #4fc3a1;
   --background-color-dark: #1a1e24;
   --surface-color-dark: #2d3440;
