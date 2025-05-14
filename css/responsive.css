@@ -1,0 +1,160 @@
+/* Responsive Styles */
+
+/* Tablets and smaller desktops */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .button-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .footer-info {
+    text-align: left;
+  }
+
+  .welcome-content h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* Larger screens */
+@media screen and (min-width: 1024px) {
+  .button-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .top-nav {
+    padding: var(--spacing-md) var(--spacing-xl);
+  }
+
+  .logo h1 {
+    font-size: 1.8rem;
+  }
+
+  .welcome-section {
+    height: 40vh;
+  }
+
+  .welcome-content h2 {
+    font-size: 3rem;
+  }
+
+  .welcome-content p {
+    font-size: 1.4rem;
+  }
+
+  .category-btn {
+    height: 150px;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-info {
+    text-align: left;
+  }
+}
+
+/* Mobile devices */
+@media screen and (max-width: 767px) {
+  .button-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-btn {
+    padding: var(--spacing-md);
+    height: 100px;
+  }
+
+  .category-btn i {
+    font-size: 1.5rem;
+  }
+
+  .category-btn span {
+    font-size: 0.9rem;
+  }
+
+  .welcome-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .welcome-content p {
+    font-size: 1rem;
+  }
+
+  .menu-section {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .menu-section h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 479px) {
+  .button-container {
+    grid-template-columns: 1fr;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .top-nav {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .welcome-section {
+    min-height: 150px;
+  }
+
+  .footer-content {
+    gap: var(--spacing-md);
+  }
+}
+
+/* Landscape orientation for mobile */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  .welcome-section {
+    height: auto;
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+
+  .button-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Print styles */
+@media print {
+  .top-nav,
+  .side-menu,
+  .category-buttons,
+  .overlay {
+    display: none;
+  }
+
+  .menu-section {
+    display: block !important;
+    page-break-after: always;
+  }
+
+  .welcome-section {
+    height: auto;
+    background-image: none;
+    color: var(--text-color);
+    padding: var(--spacing-md) 0;
+  }
+
+  footer {
+    background-color: transparent;
+    color: var(--text-color);
+  }
+}
