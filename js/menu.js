@@ -36,256 +36,36 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /**
- * Load menu data from sources
- * In a production environment, this would fetch from JSON files or an API
+ * Load menu data from external JSON files
  */
-function loadMenuData() {
-  // Sample data for development purposes
-  // In production, this would be loaded from external files or an API
+async function loadMenuData() {
+  const categories = ["coffee", "food", "beer", "wine", "spirits", "cocktails"];
 
-  // Coffee menu items
-  menuData.coffee = [
-    {
-      name: {
-        en: "Espresso",
-        el: "Εσπρέσσο",
-      },
-      description: {
-        en: "Short black coffee",
-        el: "Δυνατός μαύρος καφές",
-      },
-      price: 2.5,
-    },
-    {
-      name: {
-        en: "Cappuccino",
-        el: "Καπουτσίνο",
-      },
-      description: {
-        en: "Espresso with steamed milk and foam",
-        el: "Εσπρέσσο με αφρόγαλα",
-      },
-      price: 3.5,
-    },
-    {
-      name: {
-        en: "Freddo Espresso",
-        el: "Φρέντο Εσπρέσσο",
-      },
-      description: {
-        en: "Chilled espresso served over ice",
-        el: "Κρύος εσπρέσσο με πάγο",
-      },
-      price: 3.0,
-    },
-    {
-      name: {
-        en: "Greek Coffee",
-        el: "Ελληνικός Καφές",
-      },
-      description: {
-        en: "Traditional Greek coffee brewed in a copper pot",
-        el: "Παραδοσιακός ελληνικός καφές παρασκευασμένος σε μπρίκι",
-      },
-      price: 2.5,
-    },
-  ];
+  try {
+    const promises = categories.map((category) =>
+      fetch(`data/menu/${category}.json`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Failed to load ${category} menu`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          menuData[category] = data.items || [];
+        })
+        .catch((error) => {
+          console.error(`Error loading ${category} menu:`, error);
+          menuData[category] = [];
+        })
+    );
 
-  // Food menu items
-  menuData.food = [
-    {
-      name: {
-        en: "Greek Salad",
-        el: "Χωριάτικη Σαλάτα",
-      },
-      description: {
-        en: "Fresh tomatoes, cucumber, onion, feta cheese and olives",
-        el: "Φρέσκες ντομάτες, αγγούρι, κρεμμύδι, φέτα και ελιές",
-      },
-      price: 8.5,
-    },
-    {
-      name: {
-        en: "Club Sandwich",
-        el: "Κλαμπ Σάντουιτς",
-      },
-      description: {
-        en: "Chicken, bacon, egg, tomato, lettuce and mayo",
-        el: "Κοτόπουλο, μπέικον, αυγό, ντομάτα, μαρούλι και μαγιονέζα",
-      },
-      price: 9.0,
-    },
-    {
-      name: {
-        en: "Cheese Platter",
-        el: "Πλατό Τυριών",
-      },
-      description: {
-        en: "Selection of local Cretan cheeses with crackers and fruit",
-        el: "Επιλογή τοπικών κρητικών τυριών με κράκερ και φρούτα",
-      },
-      price: 12.5,
-    },
-  ];
+    await Promise.all(promises);
 
-  // Beer menu items
-  menuData.beer = [
-    {
-      name: {
-        en: "Mythos",
-        el: "Μύθος",
-      },
-      description: {
-        en: "Greek lager beer (330ml)",
-        el: "Ελληνική λάγκερ μπύρα (330ml)",
-      },
-      price: 4.0,
-    },
-    {
-      name: {
-        en: "Alfa",
-        el: "Άλφα",
-      },
-      description: {
-        en: "Hellenic lager (330ml)",
-        el: "Ελληνική λάγκερ (330ml)",
-      },
-      price: 4.0,
-    },
-    {
-      name: {
-        en: "Charma Cretan Ale",
-        el: "Χάρμα Κρητική Έιλ",
-      },
-      description: {
-        en: "Locally brewed Cretan craft beer (330ml)",
-        el: "Τοπική κρητική μπύρα μικροζυθοποιίας (330ml)",
-      },
-      price: 5.5,
-    },
-  ];
-
-  // Wine menu items
-  menuData.wine = [
-    {
-      name: {
-        en: "House White Wine",
-        el: "Λευκό Κρασί Σπιτιού",
-      },
-      description: {
-        en: "Local Cretan Vidiano (Glass)",
-        el: "Τοπικό Κρητικό Βιδιανό (Ποτήρι)",
-      },
-      price: 4.5,
-    },
-    {
-      name: {
-        en: "House Red Wine",
-        el: "Κόκκινο Κρασί Σπιτιού",
-      },
-      description: {
-        en: "Local Cretan Kotsifali blend (Glass)",
-        el: "Τοπικό Κρητικό χαρμάνι Κοτσιφάλι (Ποτήρι)",
-      },
-      price: 4.5,
-    },
-    {
-      name: {
-        en: "Boutari Moschofilero",
-        el: "Μπουτάρη Μοσχοφίλερο",
-      },
-      description: {
-        en: "Aromatic white wine with floral notes (Bottle)",
-        el: "Αρωματικό λευκό κρασί με ανθώδεις νότες (Φιάλη)",
-      },
-      price: 22.0,
-    },
-  ];
-
-  // Spirits menu items
-  menuData.spirits = [
-    {
-      name: {
-        en: "Ouzo",
-        el: "Ούζο",
-      },
-      description: {
-        en: "Traditional Greek anise-flavored spirit",
-        el: "Παραδοσιακό Ελληνικό απόσταγμα με άρωμα γλυκάνισου",
-      },
-      price: 5.0,
-    },
-    {
-      name: {
-        en: "Tsikoudia/Raki",
-        el: "Τσικουδιά/Ρακί",
-      },
-      description: {
-        en: "Traditional Cretan spirit, potent and pure",
-        el: "Παραδοσιακό Κρητικό απόσταγμα, δυνατό και αγνό",
-      },
-      price: 4.5,
-    },
-    {
-      name: {
-        en: "Premium Whiskey",
-        el: "Εκλεκτό Ουίσκι",
-      },
-      description: {
-        en: "Selection of single malt whiskeys",
-        el: "Επιλογή από μονοβαρέλα ουίσκι",
-      },
-      price: 8.0,
-    },
-  ];
-
-  // Cocktails menu items
-  menuData.cocktails = [
-    {
-      name: {
-        en: "Mojito",
-        el: "Μοχίτο",
-      },
-      description: {
-        en: "White rum, sugar, lime, soda water and mint",
-        el: "Λευκό ρούμι, ζάχαρη, λάιμ, σόδα και δυόσμος",
-      },
-      price: 8.0,
-    },
-    {
-      name: {
-        en: "Margarita",
-        el: "Μαργαρίτα",
-      },
-      description: {
-        en: "Tequila, triple sec and lime juice",
-        el: "Τεκίλα, τριπλ σεκ και χυμός λάιμ",
-      },
-      price: 8.5,
-    },
-    {
-      name: {
-        en: "Bonobo Special",
-        el: "Bonobo Special",
-      },
-      description: {
-        en: "House specialty cocktail with secret ingredients",
-        el: "Ειδικό κοκτέιλ του μαγαζιού με μυστικά συστατικά",
-      },
-      price: 10.0,
-    },
-    {
-      name: {
-        en: "Mediterranean Sunset",
-        el: "Μεσογειακό Ηλιοβασίλεμα",
-      },
-      description: {
-        en: "Gin, Aperol, fresh orange juice, rosemary syrup",
-        el: "Τζιν, Απερόλ, φρέσκος χυμός πορτοκάλι, σιρόπι δενδρολίβανου",
-      },
-      price: 9.5,
-    },
-  ];
+    // Initialize menu sections after all data is loaded
+    initializeMenuSections();
+  } catch (error) {
+    console.error("Error loading menu data:", error);
+  }
 }
 
 /**
