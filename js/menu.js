@@ -10,6 +10,8 @@
 const menuData = {
   coffee: [],
   food: [],
+  beer: [],
+  wine: [],
   spirits: [],
   cocktails: [],
 };
@@ -21,6 +23,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize menu sections
   initializeMenuSections();
+
+  // Listen for language changes
+  document.addEventListener("languageChanged", function (e) {
+    updateMenuLanguage(e.detail.language);
+  });
+
+  // Listen for theme changes
+  document.addEventListener("themeChanged", function () {
+    // Any theme-specific menu adjustments would go here
+  });
 });
 
 /**
@@ -66,6 +78,17 @@ function loadMenuData() {
       },
       price: 3.0,
     },
+    {
+      name: {
+        en: "Greek Coffee",
+        el: "Ελληνικός Καφές",
+      },
+      description: {
+        en: "Traditional Greek coffee brewed in a copper pot",
+        el: "Παραδοσιακός ελληνικός καφές παρασκευασμένος σε μπρίκι",
+      },
+      price: 2.5,
+    },
   ];
 
   // Food menu items
@@ -92,25 +115,25 @@ function loadMenuData() {
       },
       price: 9.0,
     },
-  ];
-
-  // Spirits menu items
-  menuData.spirits = [
     {
       name: {
-        en: "House Wine (Glass)",
-        el: "Κρασί Σπιτιού (Ποτήρι)",
+        en: "Cheese Platter",
+        el: "Πλατό Τυριών",
       },
       description: {
-        en: "Local Cretan wine, red or white",
-        el: "Τοπικό Κρητικό κρασί, κόκκινο ή λευκό",
+        en: "Selection of local Cretan cheeses with crackers and fruit",
+        el: "Επιλογή τοπικών κρητικών τυριών με κράκερ και φρούτα",
       },
-      price: 4.5,
+      price: 12.5,
     },
+  ];
+
+  // Beer menu items
+  menuData.beer = [
     {
       name: {
-        en: "Mythos Beer",
-        el: "Μπύρα Μύθος",
+        en: "Mythos",
+        el: "Μύθος",
       },
       description: {
         en: "Greek lager beer (330ml)",
@@ -118,6 +141,69 @@ function loadMenuData() {
       },
       price: 4.0,
     },
+    {
+      name: {
+        en: "Alfa",
+        el: "Άλφα",
+      },
+      description: {
+        en: "Hellenic lager (330ml)",
+        el: "Ελληνική λάγκερ (330ml)",
+      },
+      price: 4.0,
+    },
+    {
+      name: {
+        en: "Charma Cretan Ale",
+        el: "Χάρμα Κρητική Έιλ",
+      },
+      description: {
+        en: "Locally brewed Cretan craft beer (330ml)",
+        el: "Τοπική κρητική μπύρα μικροζυθοποιίας (330ml)",
+      },
+      price: 5.5,
+    },
+  ];
+
+  // Wine menu items
+  menuData.wine = [
+    {
+      name: {
+        en: "House White Wine",
+        el: "Λευκό Κρασί Σπιτιού",
+      },
+      description: {
+        en: "Local Cretan Vidiano (Glass)",
+        el: "Τοπικό Κρητικό Βιδιανό (Ποτήρι)",
+      },
+      price: 4.5,
+    },
+    {
+      name: {
+        en: "House Red Wine",
+        el: "Κόκκινο Κρασί Σπιτιού",
+      },
+      description: {
+        en: "Local Cretan Kotsifali blend (Glass)",
+        el: "Τοπικό Κρητικό χαρμάνι Κοτσιφάλι (Ποτήρι)",
+      },
+      price: 4.5,
+    },
+    {
+      name: {
+        en: "Boutari Moschofilero",
+        el: "Μπουτάρη Μοσχοφίλερο",
+      },
+      description: {
+        en: "Aromatic white wine with floral notes (Bottle)",
+        el: "Αρωματικό λευκό κρασί με ανθώδεις νότες (Φιάλη)",
+      },
+      price: 22.0,
+    },
+  ];
+
+  // Spirits menu items
+  menuData.spirits = [
     {
       name: {
         en: "Ouzo",
@@ -128,6 +214,28 @@ function loadMenuData() {
         el: "Παραδοσιακό Ελληνικό απόσταγμα με άρωμα γλυκάνισου",
       },
       price: 5.0,
+    },
+    {
+      name: {
+        en: "Tsikoudia/Raki",
+        el: "Τσικουδιά/Ρακί",
+      },
+      description: {
+        en: "Traditional Cretan spirit, potent and pure",
+        el: "Παραδοσιακό Κρητικό απόσταγμα, δυνατό και αγνό",
+      },
+      price: 4.5,
+    },
+    {
+      name: {
+        en: "Premium Whiskey",
+        el: "Εκλεκτό Ουίσκι",
+      },
+      description: {
+        en: "Selection of single malt whiskeys",
+        el: "Επιλογή από μονοβαρέλα ουίσκι",
+      },
+      price: 8.0,
     },
   ];
 
@@ -166,6 +274,17 @@ function loadMenuData() {
       },
       price: 10.0,
     },
+    {
+      name: {
+        en: "Mediterranean Sunset",
+        el: "Μεσογειακό Ηλιοβασίλεμα",
+      },
+      description: {
+        en: "Gin, Aperol, fresh orange juice, rosemary syrup",
+        el: "Τζιν, Απερόλ, φρέσκος χυμός πορτοκάλι, σιρόπι δενδρολίβανου",
+      },
+      price: 9.5,
+    },
   ];
 }
 
@@ -176,6 +295,8 @@ function initializeMenuSections() {
   // Get container elements
   const coffeeContainer = document.querySelector("#coffee-section .menu-items");
   const foodContainer = document.querySelector("#food-section .menu-items");
+  const beerContainer = document.querySelector("#beer-section .menu-items");
+  const wineContainer = document.querySelector("#wine-section .menu-items");
   const spiritsContainer = document.querySelector(
     "#spirits-section .menu-items"
   );
@@ -184,16 +305,21 @@ function initializeMenuSections() {
   );
 
   // Clear existing content
-  coffeeContainer.innerHTML = "";
-  foodContainer.innerHTML = "";
-  spiritsContainer.innerHTML = "";
-  cocktailsContainer.innerHTML = "";
+  if (coffeeContainer) coffeeContainer.innerHTML = "";
+  if (foodContainer) foodContainer.innerHTML = "";
+  if (beerContainer) beerContainer.innerHTML = "";
+  if (wineContainer) wineContainer.innerHTML = "";
+  if (spiritsContainer) spiritsContainer.innerHTML = "";
+  if (cocktailsContainer) cocktailsContainer.innerHTML = "";
 
   // Populate menu sections
-  populateMenuSection(coffeeContainer, menuData.coffee);
-  populateMenuSection(foodContainer, menuData.food);
-  populateMenuSection(spiritsContainer, menuData.spirits);
-  populateMenuSection(cocktailsContainer, menuData.cocktails);
+  if (coffeeContainer) populateMenuSection(coffeeContainer, menuData.coffee);
+  if (foodContainer) populateMenuSection(foodContainer, menuData.food);
+  if (beerContainer) populateMenuSection(beerContainer, menuData.beer);
+  if (wineContainer) populateMenuSection(wineContainer, menuData.wine);
+  if (spiritsContainer) populateMenuSection(spiritsContainer, menuData.spirits);
+  if (cocktailsContainer)
+    populateMenuSection(cocktailsContainer, menuData.cocktails);
 }
 
 /**
@@ -265,11 +391,15 @@ function updateMenuLanguage(lang) {
   menuItems.forEach((item) => {
     // Update name
     const nameElement = item.querySelector(".menu-item-name");
-    nameElement.textContent = item.getAttribute(`data-name-${lang}`);
+    if (nameElement) {
+      nameElement.textContent = item.getAttribute(`data-name-${lang}`);
+    }
 
     // Update description
     const descElement = item.querySelector(".menu-item-description");
-    descElement.textContent = item.getAttribute(`data-desc-${lang}`);
+    if (descElement) {
+      descElement.textContent = item.getAttribute(`data-desc-${lang}`);
+    }
   });
 
   // Update empty messages if any
@@ -280,18 +410,67 @@ function updateMenuLanguage(lang) {
         ? "Menu items coming soon!"
         : "Τα στοιχεία του μενού έρχονται σύντομα!";
   });
+
+  // Update ingredient labels
+  const ingredientLabels = document.querySelectorAll(".ingredient-label");
+  const ingredientsText = lang === "en" ? "Ingredients" : "Συστατικά";
+  ingredientLabels.forEach((label) => {
+    label.textContent = ingredientsText;
+  });
+
+  // Also reinitialize sections in case they need updating
+  initializeMenuSections();
 }
 
-// Expose this function globally so it can be called from language.js
+// Expose updateMenuLanguage function globally
 window.updateMenuLanguage = updateMenuLanguage;
 
-// Add listener for language changes
-document.addEventListener("languageChanged", function (e) {
-  updateMenuLanguage(e.detail.language);
-});
-
-// Apply menu filtering functionality (if needed)
+/**
+ * Filter menu items by tag or property
+ * @param {string} category - The menu category to filter
+ * @param {string|Object} filter - The filter criteria
+ */
 function filterMenuItems(category, filter) {
-  // Implementation would go here if filtering is required
-  // For example, filtering by dietary requirements or price range
+  const container = document.querySelector(`#${category}-section .menu-items`);
+  if (!container) return;
+
+  // Clear container
+  container.innerHTML = "";
+
+  // Apply filter
+  let filteredItems = [];
+
+  if (typeof filter === "string") {
+    // Filter by tag
+    filteredItems = menuData[category].filter(
+      (item) => item.tags && item.tags.includes(filter)
+    );
+  } else if (typeof filter === "object") {
+    // Filter by properties (e.g., { price: { min: 5, max: 10 } })
+    filteredItems = menuData[category].filter((item) => {
+      let match = true;
+
+      // Check each filter property
+      for (const [prop, value] of Object.entries(filter)) {
+        if (prop === "price") {
+          // Price range
+          if (value.min && item.price < value.min) match = false;
+          if (value.max && item.price > value.max) match = false;
+        } else if (item[prop] !== value) {
+          match = false;
+        }
+      }
+
+      return match;
+    });
+  } else {
+    // No filter or invalid filter, show all items
+    filteredItems = menuData[category];
+  }
+
+  // Populate with filtered items
+  populateMenuSection(container, filteredItems);
 }
+
+// Expose filterMenuItems function globally
+window.filterMenuItems = filterMenuItems;

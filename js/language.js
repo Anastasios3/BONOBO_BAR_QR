@@ -61,51 +61,115 @@ function initializeLanguageSelector() {
  * Load language files for both supported languages
  */
 function loadLanguages() {
-  // Define default translations in case files fail to load
+  // Define translations
   translations.en = {
     nav: {
       home: "Home",
       about: "About Us",
       coffee: "Coffee",
       food: "Food",
-      spirits: "Spirits & Wine & Beer",
+      beer: "Beer",
+      wine: "Wine",
+      spirits: "Spirits",
       cocktails: "Cocktails",
+      events: "Events",
+      gallery: "Gallery",
       contact: "Contact",
     },
     welcome: {
       title: "Welcome to BONOBO BAR",
       subtitle: "Discover our selections in Rethymno",
+      findus: "Find Us",
+      explore: "Explore",
+    },
+    categories: {
+      title: "Our Menu",
     },
     buttons: {
       coffee: "Coffee",
       food: "Food",
-      spirits: "Spirits & Wine & Beer",
+      beer: "Beer",
+      wine: "Wine",
+      spirits: "Spirits",
       cocktails: "Cocktails",
     },
     sections: {
       coffee: {
         title: "Coffee Menu",
-        content: "Our coffee selection will be displayed here.",
+        description: "Premium coffee selections for any time of day",
       },
       food: {
         title: "Food Menu",
-        content: "Our food selection will be displayed here.",
+        description: "Delicious culinary options to satisfy your cravings",
+      },
+      beer: {
+        title: "Beer List",
+        description: "Refreshing local and international beers",
+      },
+      wine: {
+        title: "Wine Selection",
+        description: "Finest local and imported wines",
       },
       spirits: {
-        title: "Spirits, Wine & Beer",
-        content:
-          "Our spirits, wine, and beer selection will be displayed here.",
+        title: "Spirits",
+        description: "Premium spirits from around the world",
       },
       cocktails: {
         title: "Cocktails",
-        content: "Our cocktail selection will be displayed here.",
+        description: "Handcrafted signature cocktails",
       },
     },
+    gallery: {
+      title: "Gallery",
+      description: "Experience the atmosphere of BONOBO BAR",
+    },
+    events: {
+      title: "Upcoming Events",
+      description: "Don't miss our special nights and performances",
+      event1: {
+        title: "Live Jazz Night",
+        description: "Enjoy smooth jazz tunes with specialty cocktails",
+      },
+      event2: {
+        title: "Wine Tasting",
+        description: "Discover the finest Cretan wines with our sommelier",
+      },
+    },
+    months: {
+      jan: "Jan",
+      feb: "Feb",
+      mar: "Mar",
+      apr: "Apr",
+      may: "May",
+      jun: "Jun",
+      jul: "Jul",
+      aug: "Aug",
+      sep: "Sep",
+      oct: "Oct",
+      nov: "Nov",
+      dec: "Dec",
+    },
+    contact: {
+      title: "Find Us",
+      description: "Visit BONOBO BAR in the heart of Rethymno",
+      address: "Old Town, Rethymno, Crete, Greece",
+      hours: "Open daily: 9:00 - 02:00",
+      phone: "+30 XXXXXXXXXX",
+    },
     footer: {
-      address: "Address: Rethymno, Crete, Greece",
-      hours: "Opening Hours: 9:00 - 02:00",
-      phone: "Phone: +30 XXXXXXXXXX",
+      quicklinks: "Quick Links",
+      hours: {
+        title: "Opening Hours",
+        everyday: "Every day",
+      },
+      newsletter: "Newsletter",
+      "newsletter.description": "Subscribe for updates and special offers",
+      subscribe: "Subscribe",
       rights: "All Rights Reserved.",
+    },
+    menu: {
+      ingredients: "Ingredients",
+      price: "Price",
     },
   };
 
@@ -115,43 +179,109 @@ function loadLanguages() {
       about: "Σχετικά με εμάς",
       coffee: "Καφές",
       food: "Φαγητό",
-      spirits: "Ποτά & Κρασί & Μπύρα",
+      beer: "Μπύρα",
+      wine: "Κρασί",
+      spirits: "Ποτά",
       cocktails: "Κοκτέιλ",
+      events: "Εκδηλώσεις",
+      gallery: "Γκαλερί",
       contact: "Επικοινωνία",
     },
     welcome: {
       title: "Καλώς ήρθατε στο BONOBO BAR",
       subtitle: "Ανακαλύψτε τις επιλογές μας στο Ρέθυμνο",
+      findus: "Βρείτε μας",
+      explore: "Εξερεύνηση",
+    },
+    categories: {
+      title: "Το Μενού μας",
     },
     buttons: {
       coffee: "Καφές",
       food: "Φαγητό",
-      spirits: "Ποτά & Κρασί & Μπύρα",
+      beer: "Μπύρα",
+      wine: "Κρασί",
+      spirits: "Ποτά",
       cocktails: "Κοκτέιλ",
     },
     sections: {
       coffee: {
         title: "Μενού Καφέ",
-        content: "Εδώ θα εμφανίζεται η επιλογή καφέ μας.",
+        description: "Εκλεκτές επιλογές καφέ για κάθε στιγμή της ημέρας",
       },
       food: {
         title: "Μενού Φαγητού",
-        content: "Εδώ θα εμφανίζεται η επιλογή φαγητού μας.",
+        description: "Λαχταριστές επιλογές φαγητού για κάθε γευστική προτίμηση",
+      },
+      beer: {
+        title: "Κατάλογος Μπύρας",
+        description: "Δροσιστικές τοπικές και διεθνείς μπύρες",
+      },
+      wine: {
+        title: "Επιλογές Κρασιού",
+        description: "Εκλεκτά τοπικά και εισαγόμενα κρασιά",
       },
       spirits: {
-        title: "Ποτά, Κρασί & Μπύρα",
-        content: "Εδώ θα εμφανίζεται η επιλογή ποτών, κρασιών και μπύρας μας.",
+        title: "Ποτά",
+        description: "Εκλεκτά ποτά από όλο τον κόσμο",
       },
       cocktails: {
         title: "Κοκτέιλ",
-        content: "Εδώ θα εμφανίζεται η επιλογή κοκτέιλ μας.",
+        description: "Χειροποίητα signature κοκτέιλ",
       },
     },
+    gallery: {
+      title: "Γκαλερί",
+      description: "Ζήστε την ατμόσφαιρα του BONOBO BAR",
+    },
+    events: {
+      title: "Επερχόμενες Εκδηλώσεις",
+      description: "Μην χάσετε τις ειδικές βραδιές και τις εκδηλώσεις μας",
+      event1: {
+        title: "Βραδιά Τζαζ",
+        description: "Απολαύστε τζαζ μουσική με ξεχωριστά κοκτέιλ",
+      },
+      event2: {
+        title: "Γευσιγνωσία Κρασιού",
+        description: "Ανακαλύψτε τα καλύτερα κρητικά κρασιά με τον οινοχόο μας",
+      },
+    },
+    months: {
+      jan: "Ιαν",
+      feb: "Φεβ",
+      mar: "Μαρ",
+      apr: "Απρ",
+      may: "Μάι",
+      jun: "Ιουν",
+      jul: "Ιουλ",
+      aug: "Αυγ",
+      sep: "Σεπ",
+      oct: "Οκτ",
+      nov: "Νοε",
+      dec: "Δεκ",
+    },
+    contact: {
+      title: "Βρείτε μας",
+      description: "Επισκεφθείτε το BONOBO BAR στην καρδιά του Ρεθύμνου",
+      address: "Παλιά Πόλη, Ρέθυμνο, Κρήτη, Ελλάδα",
+      hours: "Ανοιχτά καθημερινά: 9:00 - 02:00",
+      phone: "+30 XXXXXXXXXX",
+    },
     footer: {
-      address: "Διεύθυνση: Ρέθυμνο, Κρήτη, Ελλάδα",
-      hours: "Ώρες Λειτουργίας: 9:00 - 02:00",
-      phone: "Τηλέφωνο: +30 XXXXXXXXXX",
+      quicklinks: "Γρήγοροι Σύνδεσμοι",
+      hours: {
+        title: "Ώρες Λειτουργίας",
+        everyday: "Καθημερινά",
+      },
+      newsletter: "Ενημερωτικό Δελτίο",
+      "newsletter.description":
+        "Εγγραφείτε για ενημερώσεις και ειδικές προσφορές",
+      subscribe: "Εγγραφή",
       rights: "Με επιφύλαξη παντός δικαιώματος.",
+    },
+    menu: {
+      ingredients: "Συστατικά",
+      price: "Τιμή",
     },
   };
 
@@ -212,6 +342,11 @@ function setLanguage(lang) {
     applyTranslations();
   }
 
+  // Update menu items if menu is loaded
+  if (window.updateMenuLanguage) {
+    window.updateMenuLanguage(lang);
+  }
+
   // Toggle special font styling for Greek (if needed)
   if (lang === "el") {
     document.documentElement.classList.add("greek-font");
@@ -221,6 +356,13 @@ function setLanguage(lang) {
 
   // Set HTML lang attribute for accessibility
   document.documentElement.lang = lang;
+
+  // Dispatch event for other components
+  document.dispatchEvent(
+    new CustomEvent("languageChanged", {
+      detail: { language: lang },
+    })
+  );
 }
 
 /**
@@ -237,6 +379,37 @@ function applyTranslations() {
 
     if (translation) {
       element.textContent = translation;
+    }
+  });
+
+  // Update document title if needed
+  if (translations[currentLanguage].pageTitle) {
+    document.title = translations[currentLanguage].pageTitle;
+  }
+
+  // Update placeholder texts if needed
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.getAttribute("data-i18n-placeholder");
+    const translation = getNestedTranslation(
+      translations[currentLanguage],
+      key
+    );
+
+    if (translation) {
+      element.placeholder = translation;
+    }
+  });
+
+  // Update buttons if needed
+  document.querySelectorAll("button[data-i18n-value]").forEach((element) => {
+    const key = element.getAttribute("data-i18n-value");
+    const translation = getNestedTranslation(
+      translations[currentLanguage],
+      key
+    );
+
+    if (translation) {
+      element.value = translation;
     }
   });
 }
@@ -261,3 +434,25 @@ function getNestedTranslation(obj, path) {
 
   return result;
 }
+
+/**
+ * Get a specific translation by key
+ * Public helper function for other scripts
+ * @param {string} key - The translation key using dot notation
+ * @param {string} lang - Optional language override
+ * @returns {string|null} - The translation or null if not found
+ */
+function getTranslation(key, lang = null) {
+  const language = lang || currentLanguage;
+  if (!translations[language]) {
+    return null;
+  }
+  return getNestedTranslation(translations[language], key);
+}
+
+// Expose functions to global scope
+window.setLanguage = setLanguage;
+window.getTranslation = getTranslation;
+window.getCurrentLanguage = function () {
+  return currentLanguage;
+};
