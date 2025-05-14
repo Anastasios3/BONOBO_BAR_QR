@@ -8,20 +8,34 @@
     <link rel="stylesheet" href="css/responsive.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <script src="js/main.js" defer></script>
     <script src="js/menu.js" defer></script>
     <script src="js/language.js" defer></script>
+    <script src="js/theme.js" defer></script>
   </head>
-  <body>
+  <body class="light-theme">
     <header>
       <nav class="top-nav">
-        <div class="language-selector">
-          <button id="lang-toggle" aria-label="Toggle Language">
+        <div class="left-controls">
+          <button
+            id="lang-toggle"
+            class="control-btn"
+            aria-label="Toggle Language"
+          >
             <span class="active-lang">EN</span>
             <i class="fas fa-globe"></i>
           </button>
+
+          <button
+            id="theme-toggle"
+            class="control-btn"
+            aria-label="Toggle Theme"
+          >
+            <i class="fas fa-sun"></i>
+          </button>
+
           <div class="language-dropdown">
             <button data-lang="en" class="active">English</button>
             <button data-lang="el">Ελληνικά</button>
@@ -33,30 +47,41 @@
         </div>
 
         <div class="menu-toggle">
-          <button id="hamburger-menu" aria-label="Open Menu">
+          <button
+            id="hamburger-menu"
+            class="control-btn"
+            aria-label="Open Menu"
+          >
             <i class="fas fa-bars"></i>
           </button>
         </div>
       </nav>
 
       <div class="side-menu" id="side-menu">
-        <button class="close-menu" aria-label="Close Menu">
-          <i class="fas fa-times"></i>
-        </button>
+        <div class="side-menu-header">
+          <h2>BONOBO</h2>
+          <button class="close-menu control-btn" aria-label="Close Menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
         <ul>
           <li><a href="#" data-i18n="nav.home">Home</a></li>
           <li><a href="#" data-i18n="nav.about">About Us</a></li>
           <li><a href="#coffee-section" data-i18n="nav.coffee">Coffee</a></li>
           <li><a href="#food-section" data-i18n="nav.food">Food</a></li>
+          <li><a href="#beer-section" data-i18n="nav.beer">Beer</a></li>
+          <li><a href="#wine-section" data-i18n="nav.wine">Wine</a></li>
           <li>
-            <a href="#spirits-section" data-i18n="nav.spirits"
-              >Spirits & Wine & Beer</a
-            >
+            <a href="#spirits-section" data-i18n="nav.spirits">Spirits</a>
           </li>
           <li>
             <a href="#cocktails-section" data-i18n="nav.cocktails">Cocktails</a>
           </li>
-          <li><a href="#" data-i18n="nav.contact">Contact</a></li>
+          <li><a href="#" data-i18n="nav.events">Events</a></li>
+          <li><a href="#" data-i18n="nav.gallery">Gallery</a></li>
+          <li>
+            <a href="#contact-section" data-i18n="nav.contact">Contact</a>
+          </li>
         </ul>
       </div>
     </header>
@@ -68,10 +93,25 @@
           <p data-i18n="welcome.subtitle">
             Discover our selections in Rethymno
           </p>
+          <div class="cta-buttons">
+            <a
+              href="#contact-section"
+              class="cta-btn primary"
+              data-i18n="welcome.findus"
+              >Find Us</a
+            >
+            <a
+              href="#gallery-section"
+              class="cta-btn secondary"
+              data-i18n="welcome.explore"
+              >Explore</a
+            >
+          </div>
         </div>
       </section>
 
       <section class="category-buttons">
+        <h3 class="section-title" data-i18n="categories.title">Our Menu</h3>
         <div class="button-container" id="dynamic-buttons">
           <!-- Buttons will be dynamically ordered based on time of day via JavaScript -->
           <button
@@ -79,103 +119,91 @@
             id="coffee-btn"
             data-target="coffee-section"
           >
-            <i class="fas fa-coffee"></i>
+            <div class="btn-icon"><i class="fas fa-coffee"></i></div>
             <span data-i18n="buttons.coffee">Coffee</span>
           </button>
           <button class="category-btn" id="food-btn" data-target="food-section">
-            <i class="fas fa-utensils"></i>
+            <div class="btn-icon"><i class="fas fa-utensils"></i></div>
             <span data-i18n="buttons.food">Food</span>
+          </button>
+          <button class="category-btn" id="beer-btn" data-target="beer-section">
+            <div class="btn-icon"><i class="fas fa-beer"></i></div>
+            <span data-i18n="buttons.beer">Beer</span>
+          </button>
+          <button class="category-btn" id="wine-btn" data-target="wine-section">
+            <div class="btn-icon"><i class="fas fa-wine-glass-alt"></i></div>
+            <span data-i18n="buttons.wine">Wine</span>
           </button>
           <button
             class="category-btn"
             id="spirits-btn"
             data-target="spirits-section"
           >
-            <i class="fas fa-wine-bottle"></i>
-            <span data-i18n="buttons.spirits">Spirits & Wine & Beer</span>
+            <div class="btn-icon"><i class="fas fa-wine-bottle"></i></div>
+            <span data-i18n="buttons.spirits">Spirits</span>
           </button>
           <button
             class="category-btn"
             id="cocktails-btn"
             data-target="cocktails-section"
           >
-            <i class="fas fa-glass-martini-alt"></i>
+            <div class="btn-icon"><i class="fas fa-cocktail"></i></div>
             <span data-i18n="buttons.cocktails">Cocktails</span>
           </button>
         </div>
       </section>
 
-      <!-- Content sections (initially hidden, will be shown when corresponding button is clicked) -->
+      <!-- Content sections -->
       <section id="coffee-section" class="menu-section">
-        <h2 data-i18n="sections.coffee.title">Coffee Menu</h2>
+        <div class="section-header">
+          <h2 data-i18n="sections.coffee.title">Coffee Menu</h2>
+          <p
+            class="section-description"
+            data-i18n="sections.coffee.description"
+          >
+            Premium coffee selections for any time of day
+          </p>
+        </div>
         <div class="menu-items">
           <!-- Coffee menu items will be populated here -->
-          <p data-i18n="sections.coffee.content">
-            Our coffee selection will be displayed here.
-          </p>
         </div>
       </section>
 
       <section id="food-section" class="menu-section">
-        <h2 data-i18n="sections.food.title">Food Menu</h2>
+        <div class="section-header">
+          <h2 data-i18n="sections.food.title">Food Menu</h2>
+          <p class="section-description" data-i18n="sections.food.description">
+            Delicious culinary options to satisfy your cravings
+          </p>
+        </div>
         <div class="menu-items">
           <!-- Food menu items will be populated here -->
-          <p data-i18n="sections.food.content">
-            Our food selection will be displayed here.
-          </p>
         </div>
       </section>
 
-      <section id="spirits-section" class="menu-section">
-        <h2 data-i18n="sections.spirits.title">Spirits, Wine & Beer</h2>
-        <div class="menu-items">
-          <!-- Spirits menu items will be populated here -->
-          <p data-i18n="sections.spirits.content">
-            Our spirits, wine, and beer selection will be displayed here.
+      <section id="beer-section" class="menu-section">
+        <div class="section-header">
+          <h2 data-i18n="sections.beer.title">Beer List</h2>
+          <p class="section-description" data-i18n="sections.beer.description">
+            Refreshing local and international beers
           </p>
+        </div>
+        <div class="menu-items">
+          <!-- Beer menu items will be populated here -->
         </div>
       </section>
 
-      <section id="cocktails-section" class="menu-section">
-        <h2 data-i18n="sections.cocktails.title">Cocktails</h2>
-        <div class="menu-items">
-          <!-- Cocktails menu items will be populated here -->
-          <p data-i18n="sections.cocktails.content">
-            Our cocktail selection will be displayed here.
+      <section id="wine-section" class="menu-section">
+        <div class="section-header">
+          <h2 data-i18n="sections.wine.title">Wine Selection</h2>
+          <p class="section-description" data-i18n="sections.wine.description">
+            Finest local and imported wines
           </p>
+        </div>
+        <div class="menu-items">
+          <!-- Wine menu items will be populated here -->
         </div>
       </section>
     </main>
-
-    <footer>
-      <div class="footer-content">
-        <div class="footer-logo">
-          <h2>BONOBO</h2>
-        </div>
-        <div class="footer-info">
-          <p data-i18n="footer.address">Address: Rethymno, Crete, Greece</p>
-          <p data-i18n="footer.hours">Opening Hours: 9:00 - 02:00</p>
-          <p data-i18n="footer.phone">Phone: +30 XXXXXXXXXX</p>
-        </div>
-        <div class="social-links">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="#" aria-label="Instagram"
-            ><i class="fab fa-instagram"></i
-          ></a>
-          <a href="#" aria-label="TripAdvisor"
-            ><i class="fab fa-tripadvisor"></i
-          ></a>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>
-          &copy; <span id="current-year">2025</span> BONOBO BAR.
-          <span data-i18n="footer.rights">All Rights Reserved.</span>
-        </p>
-      </div>
-    </footer>
-
-    <!-- Overlay for side menu -->
-    <div class="overlay" id="overlay"></div>
   </body>
 </html>
