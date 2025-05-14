@@ -84,8 +84,8 @@
           </li>
         </ul>
       </div>
-      
-      <!-- Added overlay element -->
+
+      <!-- Add overlay for mobile menu -->
       <div class="overlay" id="overlay"></div>
     </header>
 
@@ -97,35 +97,44 @@
             Discover our selections in Rethymno
           </p>
           <div class="cta-buttons">
-            
+            <a
               href="#contact-section"
               class="cta-btn primary"
               data-i18n="welcome.findus"
               >Find Us</a
             >
-            
-              href="#gallery-section"
+            <a
+              href="#menu-categories"
               class="cta-btn secondary"
               data-i18n="welcome.explore"
-              >Explore</a
+              >Explore Menu</a
             >
           </div>
         </div>
       </section>
 
-      <section class="category-buttons">
+      <section id="menu-categories" class="category-buttons">
         <h3 class="section-title" data-i18n="categories.title">Our Menu</h3>
-        
-        <!-- Added search and filter controls -->
+
+        <!-- Menu search and filter -->
         <div class="menu-controls">
-          <input type="text" id="menu-search" placeholder="Search menu..." class="menu-search">
-          <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="signature">Signature</button>
-            <button class="filter-btn" data-filter="popular">Popular</button>
+          <div class="search-wrapper">
+            <input
+              type="text"
+              id="menu-search"
+              class="menu-search"
+              placeholder="Search menu..."
+            />
+            <button
+              id="search-clear"
+              class="search-clear"
+              aria-label="Clear search"
+            >
+              <i class="fas fa-times"></i>
+            </button>
           </div>
         </div>
-        
+
         <div class="button-container" id="dynamic-buttons">
           <!-- Buttons will be dynamically ordered based on time of day via JavaScript -->
           <button
@@ -178,9 +187,16 @@
             Premium coffee selections for any time of day
           </p>
         </div>
+
+        <!-- Filter tags will be added dynamically if available -->
+        <div class="filter-tags" id="coffee-filters"></div>
+
         <div class="menu-items">
           <!-- Coffee menu items will be populated here -->
         </div>
+
+        <!-- Pagination controls -->
+        <div class="pagination" id="coffee-pagination"></div>
       </section>
 
       <section id="food-section" class="menu-section">
@@ -190,9 +206,16 @@
             Delicious culinary options to satisfy your cravings
           </p>
         </div>
+
+        <!-- Filter tags will be added dynamically if available -->
+        <div class="filter-tags" id="food-filters"></div>
+
         <div class="menu-items">
           <!-- Food menu items will be populated here -->
         </div>
+
+        <!-- Pagination controls -->
+        <div class="pagination" id="food-pagination"></div>
       </section>
 
       <section id="beer-section" class="menu-section">
@@ -202,9 +225,16 @@
             Refreshing local and international beers
           </p>
         </div>
+
+        <!-- Filter tags will be added dynamically if available -->
+        <div class="filter-tags" id="beer-filters"></div>
+
         <div class="menu-items">
           <!-- Beer menu items will be populated here -->
         </div>
+
+        <!-- Pagination controls -->
+        <div class="pagination" id="beer-pagination"></div>
       </section>
 
       <section id="wine-section" class="menu-section">
@@ -214,59 +244,63 @@
             Finest local and imported wines
           </p>
         </div>
+
+        <!-- Filter tags will be added dynamically if available -->
+        <div class="filter-tags" id="wine-filters"></div>
+
         <div class="menu-items">
           <!-- Wine menu items will be populated here -->
         </div>
+
+        <!-- Pagination controls -->
+        <div class="pagination" id="wine-pagination"></div>
       </section>
-      
+
       <section id="spirits-section" class="menu-section">
         <div class="section-header">
           <h2 data-i18n="sections.spirits.title">Spirits</h2>
-          <p class="section-description" data-i18n="sections.spirits.description">
+          <p
+            class="section-description"
+            data-i18n="sections.spirits.description"
+          >
             Premium spirits from around the world
           </p>
         </div>
+
+        <!-- Filter tags will be added dynamically if available -->
+        <div class="filter-tags" id="spirits-filters"></div>
+
         <div class="menu-items">
           <!-- Spirits menu items will be populated here -->
         </div>
+
+        <!-- Pagination controls -->
+        <div class="pagination" id="spirits-pagination"></div>
       </section>
-      
+
       <section id="cocktails-section" class="menu-section">
         <div class="section-header">
           <h2 data-i18n="sections.cocktails.title">Cocktails</h2>
-          <p class="section-description" data-i18n="sections.cocktails.description">
+          <p
+            class="section-description"
+            data-i18n="sections.cocktails.description"
+          >
             Handcrafted signature cocktails
           </p>
         </div>
+
+        <!-- Filter tags will be added dynamically if available -->
+        <div class="filter-tags" id="cocktails-filters"></div>
+
         <div class="menu-items">
           <!-- Cocktails menu items will be populated here -->
         </div>
+
+        <!-- Pagination controls -->
+        <div class="pagination" id="cocktails-pagination"></div>
       </section>
-      
-      <!-- Added gallery section with sample images -->
-      <section id="gallery-section" class="gallery-section">
-        <div class="section-header">
-          <h2 data-i18n="gallery.title">Gallery</h2>
-          <p class="section-description" data-i18n="gallery.description">
-            Experience the atmosphere of BONOBO BAR
-          </p>
-        </div>
-        <div class="gallery-container">
-          <div class="gallery-item">
-            <img src="https://source.unsplash.com/random/800x800/?bar" alt="BONOBO BAR atmosphere" loading="lazy">
-          </div>
-          <div class="gallery-item">
-            <img src="https://source.unsplash.com/random/800x800/?cocktail" alt="Cocktail" loading="lazy">
-          </div>
-          <div class="gallery-item">
-            <img src="https://source.unsplash.com/random/800x800/?coffee" alt="Coffee" loading="lazy">
-          </div>
-          <div class="gallery-item">
-            <img src="https://source.unsplash.com/random/800x800/?restaurant" alt="Restaurant" loading="lazy">
-          </div>
-        </div>
-      </section>
-      
+
+      <!-- Contact section -->
       <section id="contact-section" class="contact-section">
         <div class="section-header">
           <h2 data-i18n="contact.title">Find Us</h2>
@@ -274,11 +308,14 @@
             Visit BONOBO BAR in the heart of Rethymno
           </p>
         </div>
+
         <div class="contact-container">
           <div class="contact-info">
             <div class="info-item">
               <i class="fas fa-map-marker-alt"></i>
-              <p data-i18n="contact.address">Old Town, Rethymno, Crete, Greece</p>
+              <p data-i18n="contact.address">
+                Old Town, Rethymno, Crete, Greece
+              </p>
             </div>
             <div class="info-item">
               <i class="fas fa-clock"></i>
@@ -288,50 +325,64 @@
               <i class="fas fa-phone"></i>
               <p data-i18n="contact.phone">+30 XXXXXXXXXX</p>
             </div>
+
             <div class="social-links">
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="TripAdvisor"
+                ><i class="fab fa-tripadvisor"></i
+              ></a>
             </div>
           </div>
+
           <div class="map-container">
-            <!-- Replace with actual map embed code -->
             <div class="map-placeholder"></div>
           </div>
         </div>
       </section>
     </main>
-    
+
     <footer>
       <div class="footer-content">
         <div class="footer-logo">
           <h2>BONOBO</h2>
         </div>
+
         <div class="footer-links">
           <h3 data-i18n="footer.quicklinks">Quick Links</h3>
           <ul>
             <li><a href="#" data-i18n="nav.home">Home</a></li>
-            <li><a href="#" data-i18n="nav.about">About Us</a></li>
-            <li><a href="#menu-section" data-i18n="nav.menu">Menu</a></li>
-            <li><a href="#contact-section" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="#menu-categories" data-i18n="nav.menu">Menu</a></li>
+            <li>
+              <a href="#contact-section" data-i18n="nav.contact">Contact</a>
+            </li>
           </ul>
         </div>
+
         <div class="footer-hours">
           <h3 data-i18n="footer.hours.title">Opening Hours</h3>
-          <p><span data-i18n="footer.hours.everyday">Every day</span>: 9:00 - 02:00</p>
-        </div>
-        <div class="footer-newsletter">
-          <h3 data-i18n="footer.newsletter">Newsletter</h3>
-          <p data-i18n="footer.newsletter.description">Subscribe for updates and special offers</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Your email" required>
-            <button type="submit" data-i18n="footer.subscribe">Subscribe</button>
-          </form>
+          <p>
+            <span data-i18n="footer.hours.everyday">Every day</span>: 9:00 -
+            02:00
+          </p>
         </div>
       </div>
+
       <div class="copyright">
-        <p>© <span id="current-year">2023</span> BONOBO BAR. <span data-i18n="footer.rights">All Rights Reserved.</span></p>
+        <p>
+          © <span id="current-year">2023</span> BONOBO BAR.
+          <span data-i18n="footer.rights">All Rights Reserved.</span>
+        </p>
       </div>
     </footer>
+
+    <!-- "Back to top" button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
   </body>
 </html>

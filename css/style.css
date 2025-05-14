@@ -1005,3 +1005,304 @@ footer {
 .dark-theme #theme-toggle i {
   transform: rotate(180deg);
 }
+/* Menu Controls and Search */
+.menu-controls {
+  max-width: 600px;
+  margin: 0 auto var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.menu-search {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  font-family: var(--body-font);
+  font-size: 1rem;
+  transition: all var(--transition-fast) ease;
+  padding-right: 40px;
+}
+
+.menu-search:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px rgba(60, 23, 81, 0.1);
+}
+
+.search-clear {
+  position: absolute;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.search-clear.visible {
+  display: block;
+}
+
+/* Filter Tags */
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  justify-content: center;
+}
+
+.filter-tag {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-fast) ease;
+}
+
+.filter-tag:hover {
+  background-color: var(--border-color);
+}
+
+.filter-tag.active {
+  background-color: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-color);
+}
+
+/* Enhanced Menu Items */
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-item {
+  background-color: var(--surface-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-normal) ease,
+    box-shadow var(--transition-normal) ease;
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-md);
+  background-color: var(--primary-color);
+  opacity: 0.8;
+}
+
+.menu-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal) ease;
+}
+
+.menu-item:hover .menu-item-image img {
+  transform: scale(1.05);
+}
+
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.menu-item-name {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.menu-item-price {
+  font-weight: 600;
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+}
+
+.menu-item-description {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.menu-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-md);
+}
+
+.menu-item-tag {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
+}
+
+.dark-theme .menu-item-tag {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-item-featured {
+  position: relative;
+}
+
+.menu-item-featured::before {
+  content: "★";
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+}
+
+/* Pagination Controls */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xl);
+}
+
+.pagination-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: all var(--transition-fast) ease;
+}
+
+.pagination-button:hover {
+  background-color: var(--surface-color);
+}
+
+.pagination-button.active {
+  background-color: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-color);
+}
+
+.pagination-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.5;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.empty-state span {
+  font-size: 0.9rem;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal) ease;
+  z-index: 90;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading Indicator */
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--secondary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
